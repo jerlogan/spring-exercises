@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head">
+    <meta charset="UTF-8" />
+    <title>Home</title>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: myNav" />
+
+<p>The number you guessed was <span th:text="${number}"></span></p>
+<p>The real number was <span th:text="${diceRoll}"></span></p>
+
+<a href="/roll-dice">Roll again!</a>
+
+<nav th:replace="fragments/footer :: footer" />
+</body>
+</html>

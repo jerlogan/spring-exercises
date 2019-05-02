@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head">
+    <meta charset="UTF-8" />
+    <title>Home</title>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: myNav" />
+
+<p>This is showing post with id of <span th:text="${id}"></span></p>
+<h1><span th:text="${post.getTitle()}"></span></h1>
+<h3><span th:text="${post.getBody()}"></span></h3>
+
+
+<nav th:replace="fragments/footer :: footer" />
+</body>
+</html>

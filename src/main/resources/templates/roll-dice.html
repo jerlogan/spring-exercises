@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head">
+    <meta charset="UTF-8" />
+    <title>Home</title>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: myNav" />
+
+<h1>Guess the number</h1>
+<button><a href="roll-dice/1">1</a></button>
+<button><a href="roll-dice/2">2</a></button>
+<button><a href="roll-dice/3">3</a></button>
+<button><a href="roll-dice/4">4</a></button>
+<button><a href="roll-dice/5">5</a></button>
+<button><a href="roll-dice/6">6</a></button>
+
+
+<nav th:replace="fragments/footer :: footer" />
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head">
+    <meta charset="UTF-8" />
+    <title>Home</title>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: myNav" />
+
+<div th:each="post : ${allPosts}">
+    <h1 th:text="${post.getTitle()}"></h1>
+    <h3 th:text="${post.getBody()}"></h3>
+
+</div>
+
+
+<nav th:replace="fragments/footer :: footer" />
+</body>
+</html>
