@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head">
+    <meta charset="UTF-8" />
+    <title>Home</title>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: myNav" />
+
+
+<h1>Create a new post here.</h1>
+<p>Remember, HonestESPN adheres to a strict guideline policy. Do not sugarcoat your posts. Be completely ruthless. </p>
+
+<form method="post" action="/posts/create">
+    <label for="title">Title</label><input type="text" name="title" id="title"/>
+    <label for="body">Body</label><textarea name="body" id="body"/>
+
+
+    <label for="sport">Sport
+
+        <select th:field="*{allSports}" name="sport" id="sport">
+            <option th:each="sport : ${allSports}" th:value="${sport}" th:text="${sport.sportName}">
+            </option>
+        </select>
+
+    </label>
+
+    <label for="team">Team
+
+        <select th:field="*{allTeams}" name="team" id="team">
+            <option th:each="team : ${allTeams}" th:value="${team}" th:text="${team.teamName}">
+            </option>
+        </select>
+
+    </label>
+
+
+
+    <!--<div th:each="team : ${allTeams}">-->
+        <!--<h1 th:text="${team.getTeamName()}"></h1>-->
+        <!--<h3><b>Sport: </b><span th:text="${team.sport.getSportName()}"></span></h3>-->
+    <!--</div>-->
+
+
+    <button>Submit</button>
+</form>
+
+
+<nav th:replace="fragments/footer :: footer" />
+</body>
+</html>

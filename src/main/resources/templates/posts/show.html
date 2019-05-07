@@ -7,9 +7,12 @@
 <body>
 <nav th:replace="fragments/navbar :: myNav" />
 
-<p>This is showing post with id of <span th:text="${id}"></span></p>
-<h1><span th:text="${post.getTitle()}"></span></h1>
-<h3><span th:text="${post.getBody()}"></span></h3>
+<p>This is showing post with id of <span th:text="${post.getId()}"></span></p>
+<h1 th:text="${(post.title)}"></h1>
+<h3><span th:text="${post.body}"></span></h3>
+<!--<h3><span th:text="${post}"></span></h3>-->
+<p>Team:  <span th:text="${post.team.getTeamName()}"></span></p>
+
 
 
 <nav th:replace="fragments/footer :: footer" />

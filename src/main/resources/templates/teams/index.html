@@ -7,11 +7,10 @@
 <body>
 <nav th:replace="fragments/navbar :: myNav" />
 
-<div th:each="post : ${allPosts}">
-    <a th:href="@{'/posts/' + ${post.getId()}}"><h3 th:text="${post.getTitle()}"></h3></a>
-    <h3 th:text="${post.getId()}"></h3>
+<div th:each="team : ${allTeams}">
+    <h1 th:text="${team.getTeamName()}"></h1>
+    <h3><b>Sport: </b><span th:text="${team.sport.getSportName()}"></span></h3>
 </div>
-
 
 <nav th:replace="fragments/footer :: footer" />
 </body>

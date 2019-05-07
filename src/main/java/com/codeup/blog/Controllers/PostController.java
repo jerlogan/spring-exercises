@@ -1,68 +1,81 @@
 package com.codeup.blog.Controllers;
 
 import com.codeup.blog.models.Post;
+import com.codeup.blog.models.Sport;
+import com.codeup.blog.models.Team;
+import com.codeup.blog.models.User;
 import com.codeup.blog.services.PostRepository;
+import com.codeup.blog.services.SportRepository;
+import com.codeup.blog.services.TeamRepository;
+import com.codeup.blog.services.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 
 @Controller
 public class PostController {
 
-    private final PostRepository postDao;
+    private PostRepository postRepository;
+    private UserRepository userRepository;
+    private TeamRepository teamRepository;
+    private SportRepository sportRepository;
 
-    public PostController (PostRepository postDao) {
-        this.postDao = postDao;
+    public PostController(PostRepository postRepository, UserRepository userRepository, TeamRepository teamRepository, SportRepository sportRepository) {
+        this.postRepository = postRepository;
+        this.userRepository = userRepository;
+        this.teamRepository = teamRepository;
+        this.sportRepository = sportRepository;
     }
+
 
 
     @GetMapping("/posts")
     public String allPosts(Model model) {
-
-        model.addAttribute("allPosts", postDao.findAll());
-
-//      TEMPORARY SEEDER FOR TWO POSTS
-
-
-//        ArrayList<Post> allPosts = new ArrayList<>();
-//
-//        Post hockeyPost = new Post("Avs seeking revenge against hungry Sharks", "The Avs and Sharks will play a critical game 4 Wednesday night at Pepsi Center.");
-//        Post footballPost = new Post("Raiders surprise many as draft comes to a close", "Mike Mayock and John Gruden decided on Clemson's Clelin Ferrel as their top choice in the draft.");
-//
-//        allPosts.add(hockeyPost);
-//        allPosts.add(footballPost);
-//
-//        model.addAttribute("allPosts", allPosts);
-
-
+        model.addAttribute("allPosts", postRepository.findAll());
 
         return "posts/index";
     }
 
+//
+//      Specific post
+
     @GetMapping("/posts/{id}")
     public String specificPost(@PathVariable long id, Model model) {
-        model.addAttribute("id", id);
-        Post post = new Post("Title", "This is a brief description.");
+        Post post = postRepository.findOne(id);
         model.addAttribute("post", post);
         return "posts/show";
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
-    public String viewCreatePost() {
-        return "Create a post here.";
+    public String viewCreatePost(Model model) {
+        model.addAttribute("allTeams", teamRepository.findAll());
+        model.addAttribute("allSports", sportRepository.findAll());
+        model.addAttribute("allSports", sportRepository.findAll());
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    @ResponseBody
-    public String createPost() {
-        return "Create a post here.";
+    public String createPost(
+            @RequestParam(name = "title") String title,
+            @RequestParam(name = "body") String body,
+            @RequestParam(name = "team") String team,
+            @RequestParam(name = "sport") Sport sport) {
+        Post post = new Post();
+        post.setTitle(title);
+        post.setBody(body);
+
+
+//        teamRepository.searchTeamByTeamName(team);
+        post.setSport(sport);
+
+        System.out.println(team);
+        System.out.println(sport);
+
+        postRepository.save(post);
+        return "posts/index";
     }
-
-
 }
+
+
