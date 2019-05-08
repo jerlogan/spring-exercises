@@ -14,7 +14,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(nullable = false, length=25)
+    @Column(nullable = false, length=25, unique = true)
     private String username;
 
     @Column(nullable = false)
@@ -23,8 +23,10 @@ public class User {
     @Column(nullable = false, length=25)
     private String password;
 
-    @ManyToMany(mappedBy = "users")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "author")
     private Set<Post> posts = new HashSet<>();
+
+
 
 
 
@@ -95,7 +97,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(password);
     }
 
     @Override

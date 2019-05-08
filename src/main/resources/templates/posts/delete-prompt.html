@@ -2,19 +2,30 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: head">
     <meta charset="UTF-8" />
-    <title>Home</title>
+    <title>Delete This Ad?</title>
 </head>
 <body>
 <nav th:replace="fragments/navbar :: myNav" />
 
+<h1>Delete?</h1>
 
-<h1 th:text="${(post.title)}"></h1>
-<h3><span th:text="${post.body}"></span></h3>
+<br/>
+<br/>
+
+
+<p th:text="${(post.title)}"></p>
+<hp><span th:text="${post.body}"></span></hp>
 <!--<h3><span th:text="${post}"></span></h3>-->
 <p>Team:  <span th:text="${post.team.getTeamName()}"></span></p>
 <p>Sport:  <span th:text="${post.sport.getSportName()}"></span></p>
-<a th:href="@{'/posts/' + ${post.getId()} + '/edit'}">Edit</a>
-<a th:href="@{'/posts/' + ${post.getId()} + '/delete-prompt'}">Delete</a>
+
+<br/>
+<br/>
+
+<h3>Are you sure this is the post you would like to delete?</h3>
+
+<button><a th:href="@{'/posts/' + ${post.getId()} + '/delete-confirm'}">Delete forever</a></button>
+<button><a th:href="@{'/posts/' + ${post.getId()}}">No, go back</a></button>
 
 
 

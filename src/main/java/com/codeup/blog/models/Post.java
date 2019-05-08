@@ -23,10 +23,9 @@ public class Post {
     private Team team;
 
 
-    @ManyToMany
-    @JoinTable(name="user_post", joinColumns = @JoinColumn(name="post_id"),
-    inverseJoinColumns = @JoinColumn(name="user_id"))
-    private Set<User> users = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User author;
 
 
 
@@ -38,12 +37,12 @@ public class Post {
 
     }
 
-    public Post(String title, String body, Sport sport, Team team, Set<User> users) {
+    public Post(String title, String body, Sport sport, Team team, User author) {
         this.title = title;
         this.body = body;
         this.sport = sport;
         this.team = team;
-        this.users = users;
+        this.author = author;
     }
 
     //GETTERS, SETTERS
@@ -89,11 +88,11 @@ public class Post {
         this.team = team;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }

@@ -20,4 +20,5 @@ public class TeamController {
 
         return "teams/index";
     }
+
 }
