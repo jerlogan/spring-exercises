@@ -11,9 +11,9 @@
 <h1>Write something new.</h1>
 <p>Create you Honest Sports post here.</p>
 
-<form method="post" action="/posts/create" th:object="${post}">
-    <label for="title">Title</label><input type="text" name="title" id="title"/>
-    <label for="body">Body</label><textarea name="body" id="body"/>
+<form method="post" th:action="@{/posts/create}" th:object="${post}">
+    <label for="title">Title</label><input type="text" th:field="*{title}" name="title" id="title"/>
+    <label for="body">Body</label><textarea th:field="*{body}" name="body" id="body"/>
 
 
     <label for="sport">Sport

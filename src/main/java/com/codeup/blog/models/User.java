@@ -14,20 +14,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(nullable = false, length=25, unique = true)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false, length=25)
+    @Column(nullable = false)
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "author")
     private Set<Post> posts = new HashSet<>();
-
-
-
 
 
 
@@ -42,6 +39,13 @@ public class User {
         this.email = email;
         this.password = password;
         this.posts = posts;
+    }
+
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
     }
     //    GETTERS/SETTERS
 
@@ -84,31 +88,6 @@ public class User {
     public void setPosts(Set<Post> posts) {
         this.posts = posts;
     }
-
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id == user.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(password);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", posts=" + posts +
-                '}';
-    }
+    
 }
 

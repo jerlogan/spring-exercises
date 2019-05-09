@@ -1,7 +1,6 @@
 package com.codeup.blog.Controllers;
 
-import com.codeup.blog.services.TeamRepository;
-import com.codeup.blog.services.UserRepository;
+import com.codeup.blog.Repositories.TeamRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

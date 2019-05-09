@@ -1,11 +1,15 @@
 package com.codeup.blog.Controllers;
 
+import com.codeup.blog.Repositories.PostRepository;
+import com.codeup.blog.Repositories.SportRepository;
+import com.codeup.blog.Repositories.TeamRepository;
+import com.codeup.blog.Repositories.UserRepository;
 import com.codeup.blog.models.Post;
 import com.codeup.blog.models.Sport;
 import com.codeup.blog.models.Team;
 import com.codeup.blog.models.User;
 import com.codeup.blog.services.*;
-import org.hibernate.validator.constraints.Email;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -137,6 +141,14 @@ public class PostController {
         Sport thisSport = sportRepository.findOne(sportID);
 
 
+//        Which user is being assigned to this post?
+
+        User foundUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User dbUser = userRepository.findOne(foundUser.getId());
+
+
+
+
 //        Now it's time to actually make the post.
 
         Post post = new Post();
@@ -144,6 +156,7 @@ public class PostController {
         post.setBody(body);
         post.setSport(thisSport);
         post.setTeam(thisTeam);
+        post.setAuthor(dbUser);
 
         postRepository.save(post);
 
@@ -169,11 +182,31 @@ public class PostController {
     @GetMapping("/posts/{id}/delete-prompt")
     public String viewDeletePost(@PathVariable long id, Model model) {
         Post post = postRepository.findOne(id);
-//        postRepository.delete(post);
         model.addAttribute("post", post);
 
         return "posts/delete-prompt";
     }
+
+    @GetMapping("/posts/{id}/delete-confirm")
+    public String deletePost(@PathVariable long id) {
+        Post post = postRepository.findOne(id);
+        postRepository.delete(post);
+
+        return "posts/delete-success";
+    }
+
+
+
+//    @PostMapping("/posts/{id}/delete-prompt/delete-confirm")
+//    public String deletePost(
+//            Model model,
+//            @PathVariable(name = "id") long id) {
+//
+//        Post post = postRepository.findOne(id);
+//        postRepository.delete(post);
+//
+//        return "redirect:/posts/delete-success";
+//    }
 
 
 

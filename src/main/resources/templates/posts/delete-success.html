@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head">
+    <meta charset="UTF-8" />
+    <title>Home</title>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: myNav" />
+
+<h1>Post successfully deleted.</h1>
+<h4>What's next?</h4>
+<h6><a href="/posts/create">Write a new post</a></h6>
+<h6><a href="/posts">View all of the other posts</a></h6>
+
+
+
+<nav th:replace="fragments/footer :: footer" />
+</body>
+</html>
