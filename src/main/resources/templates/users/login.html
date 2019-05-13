@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="fragments/header :: head">
     <meta charset="UTF-8" />
-    <title>Log In</title>
+    <title>Home</title>
 </head>
 <body>
-<h1>Log In</h1>
-<div th:if="${param.error}">
-    Invalid Username and Password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
+<nav th:replace="fragments/navbar :: myNav" />
+
+<div class="login-wrapper">
+    <h1>Log In</h1>
+    <div th:if="${param.error}">
+        Invalid Username and Password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+
+    <form class="white-text login-form" th:action="@{/login}" method="post">
+        <label for="username">Username</label>
+        <input placeholder="Enter username here" class="white-text" id="username" name="username" type="text" />
+        <label for="password">Password</label>
+        <input placeholder="password" class="white-text" id="password" name="password" type="password" />
+        <button class="white black-text btn waves-effect waves-light login-button" type="submit" name="action">Log In
+            <i class="material-icons right"></i>
+        </button>
+    </form>
+    <h5>Don't have an account? Click <a href="/sign-up">here</a> to sign up today.</h5>
 </div>
 
-<div>
-    <img src="../../img/blackbear.jpg"/>
-    <img th:src="@{/resources/img/blackbear.jpg}" />
-</div>
 
-<form th:action="@{/login}" method="post">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <input type="submit" value="Log In" />
-</form>
+<nav th:replace="fragments/footer :: footer" />
 </body>
 </html>

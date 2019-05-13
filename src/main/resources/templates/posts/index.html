@@ -7,12 +7,17 @@
 <body>
 <nav th:replace="fragments/navbar :: myNav" />
 
-<h6>All Posts</h6>
 
-<div th:each="post : ${allPosts}">
-    <a th:href="@{'/posts/' + ${post.getId()}}"><h3 th:text="${post.getTitle()}"></h3></a>
-    <h6><span th:text="${post.getSport().getSportName()}"></span> (<span th:text="${post.getTeam().getTeamName()}"></span>)</h6>
-</div>
+    <div class="center-wrapper">
+        <h1>Black Bear Sports Blog</h1>
+        <h3>Welcome!</h3>
+        <p></p>
+
+        <div th:each="post : ${allPosts}">
+            <a th:href="@{'/posts/' + ${post.getId()}}"><h3 th:text="${post.getTitle()}"></h3></a>
+            <h6><span th:text="${post.getSport().getSportName()}"></span> (<span th:text="${post.getTeam().getTeamName()}"></span>)</h6>
+        </div>
+    </div>
 
 
 <nav th:replace="fragments/footer :: footer" />

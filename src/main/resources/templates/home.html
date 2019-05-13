@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments/header :: head">
     <meta charset="UTF-8" />
     <title>Home</title>
@@ -7,7 +7,7 @@
 <body>
 <nav th:replace="fragments/navbar :: myNav" />
 
-<h1>This is the home page</h1>
+<!--<h1>Hello, <span th:text="${User.}"</h1>-->
 
 
 <nav th:replace="fragments/footer :: footer" />

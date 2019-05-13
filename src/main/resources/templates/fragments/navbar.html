@@ -4,58 +4,45 @@
 <head></head>
 <body>
 
-<nav th:fragment="myNav" class="n">
-    <div>
-        <ul class="vertical medium-horizontal menu">
-            <li>
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <!--Welcome, <span th:text="${#authentication.principal.username}"/>-->
-            </li>
+
+
+    <div class="logo-wrapper">
+        <a href="#" class="brand-logo center logo-text">Black Bear Sports Blogs</a>
+    </div>
+
+
+<nav th:fragment="myNav" class="nav-custom">
+
+
 
             <!--Logged in-->
 
             <div sec:authorize="isAuthenticated()">
-                <li>
-                    <form th:action="@{/posts/create}" th:method="post">
-                        <button style="margin-top: 8px">Create</button>
-                    </form>
-                </li>
-                <li>
-                    <form th:action="@{/logout}" th:method="post">
-                        <button style="margin-top: 8px">Logout</button>
-                    </form>
-                </li>
-                <li>
-                    <form action="/posts" th:method="post">
-                        <button style="margin-top: 8px">Browse</button>
-                    </form>
-                </li>
+                <ul class="nav-ul">
+                    <li class="nav-item"><a class="nav-link" href="/posts/create">Create</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/posts">Browse</a></li>
+                    <li class="nav-item">
+                        <form th:action="@{/logout}" th:method="post">
+                            <button class="btn-link">Logout</button>
+                        </form>
+                    </li>
+                </ul>
             </div>
 
             <!--Logged out-->
 
             <div sec:authorize="isAnonymous()">
-                <li>
-                    <form th:action="@{/sign-up}" th:method="post">
-                        <button style="margin-top: 8px">Sign Up</button>
-                    </form>
-                </li>
-                <li>
-                    <form th:action="@{/login}" th:method="post">
-                        <button style="margin-top: 8px">Login</button>
-                    </form>
-                </li>
-                <li>
-                    <form action="/posts" th:method="post">
-                        <button style="margin-top: 8px">Browse</button>
-                    </form>
-                </li>
+                <ul class="nav-ul">
+                    <li class="nav-item"><a class="nav-link" href="/sign-up">Sign Up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/posts">Browse</a></li>
+                </ul>
             </div>
 
-        </ul>
-    </div>
+
+
+
+
 </nav>
 
 </body>

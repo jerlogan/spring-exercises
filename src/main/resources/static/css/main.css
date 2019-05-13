@@ -1,3 +1,109 @@
 body {
+    background-color: black;
+    color: white;
+    font-family: 'Stylish', sans-serif;
+    text-align: center;
+    margin: 0;
+    width: 100%;
+}
+a {
+    color: chocolate;
+    font-size: 18px;
+}
 
+.nav-custom {
+    background-color: #fdd345;
+    color: black;
+    margin: 0;
+    width: 100%;
+    height: 100px;
+}
+.nav-ul {
+    color: black;
+    text-align: center;
+}
+.nav-item {
+    color: black !important;
+    list-style-type: none;
+    float: left;
+}
+.nav-item a {
+    color: black!important;
+    text-decoration: none;
+    font-size: 28px;
+    line-height: 100px;
+    padding: 0 20px;
+}
+.nav-item a:hover {
+    color: chocolate!important;
+    letter-spacing: 2px;
+}
+.btn-link {
+    line-height: 100px;
+    font-family: 'Stylish', sans-serif;
+    font-size: 28px;
+    background-color: #fdd345;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+.btn-link:hover {
+    color: chocolate;
+}
+.logo-wrapper{
+    color: black;
+    text-align: center;
+    background-color: #fdd345;
+}
+
+/*---------------------------------------------------*/
+/*-----------------------CENTER PAGE-----------------*/
+/*---------------------------------------------------*/
+
+.center-wrapper {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align:center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+.center-wrapper a {
+    color: #fdd345;
+}
+.login-button, .center-wrapper h1 {
+    margin: 40px 0;
+}
+.login-form::placeholder {
+    color: black;
+}
+
+
+/*---------------------------------------------------*/
+/*-----------------------FORMS-----------------------*/
+/*---------------------------------------------------*/
+
+.form, input, select {
+    color: black;
+    margin: 10px auto;
+    display: block;
+}
+label {
+    display: block;
+    font-size: 24px;
+}
+textarea {
+    width: 100%!important;
+    height: 100px;
+}
+
+/*---------------------------------------------------*/
+/*-----------------------IMAGE-----------------------*/
+/*---------------------------------------------------*/
+
+.bear-img {
+    border: 1px solid yellow;
+    margin: 0 auto;
+    /*background-image: url("img/blackbear.jpg");*/
+    background-size: contain;
+    background-position: center;
 }

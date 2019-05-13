@@ -9,19 +9,21 @@
 <nav th:replace="fragments/navbar :: myNav" />
 
 
-<h1 th:text="${(post.title)}"></h1>
-<h3><span th:text="${post.body}"></span></h3>
-<!--<h3><span th:text="${post}"></span></h3>-->
-<p>Team:  <span th:text="${post.team.getTeamName()}"></span></p>
-<p>Sport:  <span th:text="${post.sport.getSportName()}"></span></p>
-<p>Author:  <span th:text="${post.getAuthor().getUsername()}"></span></p>
+<div class="center-wrapper">
+    <h1 th:text="${(post.title)}"></h1>
+    <h3><span th:text="${post.body}"></span></h3>
+    <!--<h3><span th:text="${post}"></span></h3>-->
+    <p>Team:  <span th:text="${post.team.getTeamName()}"></span></p>
+    <p>Sport:  <span th:text="${post.sport.getSportName()}"></span></p>
+    <p>Author:  <span th:text="${post.getAuthor().getUsername()}"></span></p>
 
 
-<div sec:authorize="isAuthenticated()">
-<a th:href="@{'/posts/' + ${post.getId()} + '/edit'}">Edit</a>
+    <div sec:authorize="isAuthenticated()">
+    <a th:href="@{'/posts/' + ${post.getId()} + '/edit'}">Edit</a>
 
 
-<a th:href="@{'/posts/' + ${post.getId()} + '/delete-prompt'}">Delete</a>
+    <a th:href="@{'/posts/' + ${post.getId()} + '/delete-prompt'}">Delete</a>
+    </div>
 </div>
 
 

@@ -7,8 +7,15 @@
     <div th:fragment="head(title)">
         <meta charset="UTF-8" />
         <title th:text="${title}"></title>
-        <link rel="stylesheet" href="../../static/css/foundation.css" th:href="@{/css/foundation.css}"/>
-        <link rel="stylesheet" href="../../static/css/app.css" th:href="@{/css/app.css}"/>
+        <!--<link rel="stylesheet" href="../../static/static/css/foundation.css" th:href="@{/css/foundation.css}"/>-->
+        <!--<link rel="stylesheet" href="../../static/static/css/app.css" th:href="@{/css/app.css}"/>-->
+
+        <!-- Compiled and minified CSS -->
+        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>-->
+
+        <link href="https://fonts.googleapis.com/css?family=Stylish" rel="stylesheet"/>
+        <link rel="stylesheet" href="/static/css/main.css" th:href="@{/css/main.css}"/>
+
     </div>
 
 </description>

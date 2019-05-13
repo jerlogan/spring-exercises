@@ -7,42 +7,43 @@
 <body>
 <nav th:replace="fragments/navbar :: myNav" />
 
+<div class="center-wrapper">
+    <h1>Edit your post here.</h1>
+    <p>You are editing: <span th:text="${post.getTitle()}"></span> </p>
 
-<h1>Edit your post here.</h1>
-<p>You are editing: <span th:text="${post.getTitle()}"></span> </p>
+    <form th:action="@{'/posts/' + ${post.getId()} + '/edit'}" th:method="post" th:object="${post}">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" th:value="${post.getTitle()}"/>
+        <br/><br/>
+        <label th:for="body">Body</label>
+        <textarea name="body" id="body" th:value="${post.getBody()}" th:text="${post.getBody()}"/>
 
-<form th:action="@{'/posts/' + ${post.getId()} + '/edit'}" th:method="post" th:object="${post}">
-    <label for="title">Title</label>
-    <input type="text" name="title" id="title" th:value="${post.getTitle()}"/>
-    <br/><br/>
-    <label th:for="body">Body</label>
-    <textarea name="body" id="body" th:value="${post.getBody()}" th:text="${post.getBody()}"/>
+        <br/><br/>
 
-    <br/><br/>
+        <label th:for="sport">Sport
 
-    <label th:for="sport">Sport
-
-        <select th:field="*{sport}">
-            <option th:type="hidden" th:each="sport : ${allSports}" th:value="${sport.getId()}">
-                <span th:text="${sport.sportName}"></span>
-            </option>
-        </select>
+            <select th:field="*{sport}">
+                <option th:type="hidden" th:each="sport : ${allSports}" th:value="${sport.getId()}">
+                    <span th:text="${sport.sportName}"></span>
+                </option>
+            </select>
 
 
-    </label>
+        </label>
 
-    <label for="team">Team
+        <label for="team">Team
 
-        <select th:field="*{team}" name="team" id="team">
-            <option th:type="hidden" th:each="team : ${allTeams}" th:value="${team.getId()}">
-                <span th:text="${team.teamName}"></span>
-            </option>
-        </select>
+            <select th:field="*{team}" name="team" id="team">
+                <option th:type="hidden" th:each="team : ${allTeams}" th:value="${team.getId()}">
+                    <span th:text="${team.teamName}"></span>
+                </option>
+            </select>
 
-    </label>
+        </label>
 
-    <button>Submit</button>
-</form>
+        <button>Submit</button>
+    </form>
+</div>
 
 
 <nav th:replace="fragments/footer :: footer" />
